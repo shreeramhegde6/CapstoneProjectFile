@@ -1,4 +1,4 @@
-# CloudGuard Step-15 MVP
+# MVP
 
 A runnable FastAPI + PostgreSQL/SQLite + JWT/RBAC + Azure-SDK-ready compliance platform.
 It covers authentication, subscription/policy management, on-demand scans, tagging and NSG checks,
@@ -13,7 +13,7 @@ python -m venv .venv
 # Linux/macOS: source .venv/bin/activate
 pip install -e ".[dev]"
 copy .env.example .env  # Windows; use cp on Linux/macOS
-uvicorn cloudguard.main:app --reload
+uvicorn capstone2.main:app --reload
 ```
 
 Swagger: `http://127.0.0.1:8000/docs`
@@ -21,7 +21,7 @@ Swagger: `http://127.0.0.1:8000/docs`
 Default admin values come from `.env`. Change them before shared deployment.
 
 ## PostgreSQL
-Set `DATABASE_URL=postgresql+psycopg://user:password@localhost:5432/cloudguard`.
+Set `DATABASE_URL=postgresql+psycopg://user:password@localhost:5432/capstone2`.
 Create the database first; tables are created automatically for this training MVP.
 
 ## Mock scan flow
@@ -30,13 +30,13 @@ The mock inventory contains a VM missing the `owner` tag and an NSG exposing SSH
 
 ## Tests
 ```bash
-pytest --cov=cloudguard --cov-report=term-missing
+pytest --cov=capstone2 --cov-report=term-missing
 ```
 
 ## CLI
 ```bash
-cloudguard login admin@cloudguard.local ChangeMe123!
-cloudguard scans
-cloudguard trigger-scan 1
-cloudguard findings
+capstone2 login admin@cloudguard.local ChangeMe123!
+capstone2 scans
+capstone2 trigger-scan 1
+capstone2 findings
 ```
